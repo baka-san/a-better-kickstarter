@@ -4,7 +4,8 @@
   "description": "Kickstarter is great, but it's not without problems. Someone posts a great idea, hundreds or thousands of people back them, and then all of that money is handed off to the project manager. Then the backers wait for the product to be finished. But what is actually happening with all of that money? Is it actually being used effectively and honestly? There are many cases of fraud and misuse of funds. Just google \"kickstarter fraud\" if you don't believe me. Imagine if instead of funds being deposited into the project manager's private bank account they were instead kept on a public smart contract. From here, the project manager could send requests to spend funds from the contract for specific needs. Only if the backers support the request for funds will the project manager be able to use the money. This keeps the product development efficient, honest, and keeps backers involved in the product they're supporting.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "dev": "next dev"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,11 @@
     "fs-extra": "^5.0.0",
     "ganache-cli": "^6.1.0",
     "mocha": "^5.1.1",
+    "next": "^4.1.4",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.79.1",
     "solc": "^0.4.23",
     "truffle-hdwallet-provider": "0.0.3",
     "web3": "^1.0.0-beta.26"
