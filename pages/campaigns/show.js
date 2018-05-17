@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import {Card} from 'semantic-ui-react';
+import {Card, Grid, Button} from 'semantic-ui-react';
 import Layout from '../../components/layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
+import ContributeForm from '../../components/contributeForm';
+import {Link} from '../../routes';
+
 
 
 class CampaignShow extends Component {
@@ -16,8 +19,9 @@ class CampaignShow extends Component {
       minContribution: summary['0'],
       balance: summary[1],
       requestsCount: summary[2],
-      contributorsCount: summary[4],
-      manager: summary[4]
+      contributorsCount: summary[3],
+      manager: summary[4],
+      address: props.query.address
     };
   }
 
@@ -69,8 +73,29 @@ class CampaignShow extends Component {
   render() {
     return (
       <Layout>
-        <h3>showing you a campaign</h3>
-        {this.renderCards()}
+        <h3>Campaign</h3>
+        
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              {this.renderCards()}
+            </Grid.Column>
+
+            <Grid.Column width={6}>
+              <ContributeForm address={this.props.address}/>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <Link route={`/campaigns/${this.props.address}/requests`} >
+                <a>
+                  <Button primary> View Requests</Button>
+                </a>
+              </Link>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Layout>
     );
   };

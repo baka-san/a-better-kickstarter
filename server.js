@@ -7,5 +7,8 @@ const handler = routes.getRequestHandler(app)
 // Without express
 const {createServer} = require('http')
 app.prepare().then(() => {
-  createServer(handler).listen(3000)
+  createServer(handler).listen(3000, (err) => {
+    if (err) throw err;
+    console.log('Ready on localhost:3000');
+  })
 })
