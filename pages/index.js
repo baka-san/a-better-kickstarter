@@ -16,7 +16,8 @@ class CampaignIndex extends Component {
       return {
         header: address,
         description: <Link route={`/campaigns/${address}`}><a>view campaign</a></Link>,
-        fluid: true
+        fluid: true,
+        style: {overflowWrap: 'break-word'}
       };
     }); 
 
