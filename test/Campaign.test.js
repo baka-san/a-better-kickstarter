@@ -65,6 +65,35 @@ describe('Campaigns', () => {
     assert.equal(contributor, true);
   });
 
+  it('doesn\'t allow people to contribute twice', async (done) => {
+    await campaign.methods.contribute().send({
+      from: accounts[1],
+      value: '200'
+    });
+
+    let contributorsCount = await campaign.methods.contributorsCount().call();
+    const contributor = await campaign.methods.contributors(accounts[1]).call();
+
+
+    // Can't contribute twice
+    try {
+      await campaign.methods.contribute().send({
+        from: accounts[1],
+        value: '200'
+      });
+      // done('failed');
+      }
+    catch(err) {
+      console.log('in catch');
+      console.log(err.message);
+      // assert(err);
+      done();
+      // contributorsCount = await campaign.methods.contributorsCount().call();
+      // console.log(contributorsCount);
+
+    }
+  });
+
   it('requires a minimum contribution', async () => {
     try {
       await campaign.methods.contribute().send({
